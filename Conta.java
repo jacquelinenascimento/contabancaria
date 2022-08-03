@@ -1,68 +1,69 @@
-
 /**
  * Conta
  */
 public class Conta {
-    public String numConta;
-    protected String tipo;
+
+    public int numConta;
+    protected String tipoConta;
     private String dono;
     private float saldo;
     private boolean status;
 
     //métodos especiais
-    
-    public Conta(String c, String t, String d, float s, Boolean st) {
+    public Conta(int n, String t, String d, float s, boolean st) {
         this.setSaldo(0);
         this.setStatus(false);
-    } 
 
-    public String getNumConta() {
+
+    }
+
+    public int getNumConta() {
         return this.numConta;
     }
 
-    public void setNumConta(String c) {
-        this.numConta = c;
+    public void setNumConta(int numConta) {
+        this.numConta = numConta;
     }
 
-    public String getTipo() {
-        return this.tipo;
+    public String getTipoConta() {
+        return this.tipoConta;
     }
 
-    public void setTipo(String t) {
-        this.tipo = t;
+    public void setTipoConta(String tipoConta) {
+        this.tipoConta = tipoConta;
     }
 
     public String getDono() {
         return this.dono;
     }
 
-    public void setDono(String d) {
-        this.dono = d;
+    public void setDono(String dono) {
+        this.dono = dono;
     }
 
     public float getSaldo() {
         return this.saldo;
     }
 
-    public void setSaldo(float s) {
-        this.saldo = s;
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
     }
 
     public boolean getStatus() {
         return this.status;
     }
 
-    public void setStatus(Boolean st) {
-        this.status = st;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
-
+    
     //métodos personalizados
 
     public void abrirConta() {
         this.setStatus(true);
-        if (this.setTipo() == "CC") {
+        if (this.setTipoConta() == "CC") {
             this.setSaldo(50);
-        } else if (this.setTipo() == "CP"){
+        } else if (this.setTipoConta() == "CP"){
             this.setSaldo(150);
         }
         System.out.println("Conta aberta com sucesso!");
@@ -80,7 +81,7 @@ public class Conta {
     }
 
     public void depositar(float v) {
-        if (this.getStatus(true)) {
+        if (this.getStatus()) {
             this.setSaldo(this.getSaldo() + v);
             System.out.println("Depósito realizado na conta de " + this.getDono());
         } else {
@@ -89,7 +90,7 @@ public class Conta {
     }
 
     public void sacar(float v) {
-        if (this.getStatus(true)) {
+        if (this.getStatus()) {
             if (this.getSaldo() >= v) {
                 this.setSaldo(this.getSaldo() - v);
                 System.out.println("Saque realizado na conta de " + this.getDono());
@@ -103,12 +104,11 @@ public class Conta {
 
     public void print() {
         System.out.println("--------------- CONTA -------------");
-        System.out.println("Tipo da conta:" + this.getTipo());
+        System.out.println("Tipo da conta:" + this.getTipoConta());
         System.out.println("Número da conta:" + this.getNumConta());
         System.out.println("Titular da conta:" + this.getDono());
         System.out.println("Saldo da conta:" + this.getSaldo());
         System.out.println("Status da conta:" + this.getStatus());
     }
-
-
+    
 }
